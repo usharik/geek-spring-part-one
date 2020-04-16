@@ -6,8 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="servlet-example" />
+        <module name="spring-mvc-example" />
         <module name="network-chat" />
+        <module name="hibernate-lesson" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-mvc-lesson" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

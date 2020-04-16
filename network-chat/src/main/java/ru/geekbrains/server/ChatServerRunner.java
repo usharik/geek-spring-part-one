@@ -7,8 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ChatServerRunner {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
-        //ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+        //ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
+        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
         ChatServer chatServer = context.getBean("chatServer", ChatServer.class);
         chatServer.start(7777);
     }

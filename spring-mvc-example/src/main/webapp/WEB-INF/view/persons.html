@@ -1,0 +1,48 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Person</title>
+    <link rel="stylesheet" th:href="@{/resources/style.css}">
+</head>
+
+<body>
+
+<nav th:replace="fragments/navbar.html :: navbar"/>
+
+<h1>Person list</h1>
+
+<a th:href="@{/person/form}">Create person</a>
+<p>
+<form method="get" th:action="@{/person}">
+    <label for="minPrice">Min price</label><input type="number" id="minPrice" name="minPrice">
+    <label for="maxPrice">Max price</label><input type="number" id="maxPrice" name="maxPrice">
+    <button type="submit">Apply</button>
+</form>
+</p>
+<table>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+    </tr>
+
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.firstName}">FN</td>
+        <td th:text="${person.lastName}">LN</td>
+        <td th:text="${person.email}">email</td>
+    </tr>
+</table>
+
+<div class="pagination">
+    <a href="#">&laquo;</a>
+    <a href="#">1</a>
+    <a class="active" href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <a href="#">&raquo;</a>
+</div>
+
+</body>
+</html>
