@@ -1,0 +1,66 @@
+GET http://localhost:8080/app/api/v1/person/all
+
+###
+
+GET http://localhost:8080/app/api/v1/person/100/id
+
+###
+
+POST http://localhost:8080/app/api/v1/person
+Content-Type: application/json
+
+{
+  "id": 1,
+  "firstName": "fromRest",
+  "lastName": "fromRest",
+  "email": "aaa@bbb.cc",
+  "age": 12
+}
+
+###
+
+DELETE http://localhost:8080/app/api/v1/person/4/id
+
+###
+
+# curl 'http://localhost:8080/app/api/v1/person/all'
+#  -H 'Connection: keep-alive'
+#  -H 'Cache-Control: max-age=0'
+#  -H 'Upgrade-Insecure-Requests: 1'
+#  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36'
+#  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+#  -H 'Sec-Fetch-Site: none'
+#  -H 'Sec-Fetch-Mode: navigate'
+#  -H 'Sec-Fetch-User: ?1'
+#  -H 'Sec-Fetch-Dest: document'
+#  -H 'Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6,de;q=0.5,cs;q=0.4'
+#  -H 'Cookie: Idea-9b48f7af=17892575-c317-4702-89b0-a017a29f817f; _ga=GA1.1.394553993.1563472197; Idea-9b48f7b0=17892575-c317-4702-89b0-a017a29f817f; Idea-9b48f7b1=71b919b1-85ca-45fe-810f-6c239595e31b; Idea-93a33157=0ebc0518-b0d9-4337-b91d-0f492b74e30a'
+#  --compressed
+GET http://localhost:8080/app/api/v1/person/all
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6,de;q=0.5,cs;q=0.4
+Cookie: Idea-9b48f7af=17892575-c317-4702-89b0-a017a29f817f; _ga=GA1.1.394553993.1563472197; Idea-9b48f7b0=17892575-c317-4702-89b0-a017a29f817f; Idea-9b48f7b1=71b919b1-85ca-45fe-810f-6c239595e31b; Idea-93a33157=0ebc0518-b0d9-4337-b91d-0f492b74e30a
+
+###
+
+# curl -d '{"firstName":"fromRest","lastName":"restFrom","email":"aaa@bbb.cc","age":12}' -H "Content-Type: application/json" -X POST http://localhost:8080/app/api/v1/person
+POST http://localhost:8080/app/api/v1/person
+Content-Type: application/json
+
+{
+  "firstName": "fromRest",
+  "lastName": "restFrom",
+  "email": "aaa@bbb.cc",
+  "age": 12
+}
+
+###
+

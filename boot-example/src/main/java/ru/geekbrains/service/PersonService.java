@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.geekbrains.persist.Person;
 import ru.geekbrains.persist.PersonRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,9 +26,19 @@ public class PersonService {
         personRepository.save(person);
     }
 
+    @Transactional
+    public void deleteById(long id) {
+        personRepository.deleteById(id);
+    }
+
     @Transactional(readOnly = true)
     public Optional<Person> findById(Long id) {
         return personRepository.findById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Person> findAll() {
+        return personRepository.findAll();
     }
 
     @Transactional(readOnly = true)
