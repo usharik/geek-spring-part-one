@@ -1,5 +1,8 @@
 package ru.geekbrains.persist;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -25,6 +28,7 @@ public class Person {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Contact> contacts;
 
     public Person() {
