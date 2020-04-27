@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Person form</title>
+    <title>User form</title>
     <link rel="stylesheet" th:href="@{/resources/style.css}">
 </head>
 
@@ -21,12 +21,12 @@
 
     <p>Password:</p>
     <p>
-        <input type="text" th:field="*{password}">
+        <input type="password" th:field="*{password}">
         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password don't match</p>
     </p>
 
     <p>Repeat password:</p>
-    <p><input type="text" th:field="*{matchingPassword}"></p>
+    <p><input type="password" th:field="*{matchingPassword}"></p>
 
     <p>Roles:</p>
     <p>

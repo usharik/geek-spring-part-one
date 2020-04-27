@@ -1,6 +1,7 @@
 package ru.geekbrains.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.persist.User;
 import ru.geekbrains.persist.UserRepository;
@@ -16,17 +17,19 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void save(UserRepr userRepr) {
         User user = new User();
         user.setId(userRepr.getId());
         user.setUsername(userRepr.getUsername());
-        user.setPassword(userRepr.getPassword());
+        user.setPassword(passwordEncoder.encode(userRepr.getPassword()));
         user.setRoles(userRepr.getRoles());
         userRepository.save(user);
     }

@@ -64,3 +64,11 @@ Content-Type: application/json
 
 ###
 
+# curl -u admin:password  http://localhost:8080/app/api/v1/person/all
+GET http://localhost:8080/app/api/v1/person/all
+Authorization: Basic admin password
+
+###
+
+
+
