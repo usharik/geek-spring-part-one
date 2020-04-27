@@ -3,6 +3,7 @@ package ru.geekbrains.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.persist.Person;
 import ru.geekbrains.service.PersonService;
@@ -31,6 +32,7 @@ public class PersonResource {
                 .orElseThrow(NotFoundException::new);
     }
 
+    @Secured({"ROLE_ADMIN"})
     @PostMapping
     public void createPerson(@RequestBody Person person) {
         if (person.getId() != null) {
@@ -39,11 +41,13 @@ public class PersonResource {
         personService.save(person);
     }
 
+    @Secured({"ROLE_ADMIN"})
     @PutMapping
     public void updatePerson(@RequestBody Person person) {
         personService.save(person);
     }
 
+    @Secured({"ROLE_ADMIN"})
     @DeleteMapping(path = "/{id}/id", produces = "application/json")
     public void deletePerson(@PathVariable("id") long id) {
         personService.deleteById(id);

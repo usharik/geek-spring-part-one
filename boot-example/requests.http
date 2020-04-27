@@ -53,6 +53,7 @@ Cookie: Idea-9b48f7af=17892575-c317-4702-89b0-a017a29f817f; _ga=GA1.1.394553993.
 
 # curl -d '{"firstName":"fromRest","lastName":"restFrom","email":"aaa@bbb.cc","age":12}' -H "Content-Type: application/json" -X POST http://localhost:8080/app/api/v1/person
 POST http://localhost:8080/app/api/v1/person
+Authorization: Basic admin password
 Content-Type: application/json
 
 {
@@ -66,7 +67,7 @@ Content-Type: application/json
 
 # curl -u admin:password  http://localhost:8080/app/api/v1/person/all
 GET http://localhost:8080/app/api/v1/person/all
-Authorization: Basic admin password
+Authorization: Basic user password
 
 ###
 
