@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,6 +14,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.geekbrains.persist.UserRepository;
+
+import javax.servlet.http.HttpServletResponse;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
@@ -47,7 +48,14 @@ public class SecurityConfiguration {
                     .anyRequest()
                     .hasAnyRole("ADMIN", "GUEST")
                     .and()
-                    .httpBasic(Customizer.withDefaults())
+                    .httpBasic()
+                    .authenticationEntryPoint((req, resp, exception) -> {
+                        resp.setContentType("application/json");
+                        resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                        resp.setCharacterEncoding("UTF-8");
+                        resp.getWriter().println("{ \"error\": \"" + exception.getMessage() + "\" }");
+                    })
+                    .and()
                     .csrf().disable()
                     .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -67,7 +75,7 @@ public class SecurityConfiguration {
                     .antMatchers("/user/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
                     .and()
-                    .formLogin(Customizer.withDefaults());
+                    .formLogin();
         }
     }
 }
